@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/caffeine-max-rager.git/static/css/main.a8300759.css",
+    "main.js": "/caffeine-max-rager.git/static/js/main.779af036.js",
+    "static/js/787.a1728547.chunk.js": "/caffeine-max-rager.git/static/js/787.a1728547.chunk.js",
+    "index.html": "/caffeine-max-rager.git/index.html",
+    "main.a8300759.css.map": "/caffeine-max-rager.git/static/css/main.a8300759.css.map",
+    "main.779af036.js.map": "/caffeine-max-rager.git/static/js/main.779af036.js.map",
+    "787.a1728547.chunk.js.map": "/caffeine-max-rager.git/static/js/787.a1728547.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a8300759.css",
+    "static/js/main.779af036.js"
+  ]
+}
