@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 export default class View extends React.Component {
   constructor(props) {
@@ -8,7 +9,9 @@ export default class View extends React.Component {
     this.headers = [
       { key: 'id', label: 'Id' },
       { key: 'bev_qty', label: 'Quantity' },
-      { key: 'bev_type', label: 'Beverage' }
+      { key: 'bev_type', label: 'Beverage' },
+      { key: 'bev_mg', label: 'Caffeine Consumed Mg' },
+      { key: 'leftover_mg', label: 'Remaining Mg' }
     ];
     this.state = { checkedBoxes: [] };
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
@@ -47,12 +50,12 @@ export default class View extends React.Component {
     });
   }
 
-  deleteBeverages = (e) => {
-    console.log(this.deleteBeverages);
-    e.preventDefault();
+  deleteBeverages = () => {
+    axios.get('http://localhost/ReactPHPcrud/delete.php?id=' + this.state.checkedBoxes)
     if (window.confirm('Are you sure, want to delete the selected beverage?')) {
       alert(this.state.checkedBoxes + " Succesfully Deleted");
     }
+    window.location.reload(false);
   }
 
   render() {
@@ -60,7 +63,6 @@ export default class View extends React.Component {
     if (bevFound) {
       return (
         <div>
-          <Button type="button" className="btn btn-danger" onClick={this.deleteBeverages}>Delete Selected Beverage(s)</Button>
           <table className="table table-bordered table-striped">
             <thead>
               <tr>
@@ -79,19 +81,19 @@ export default class View extends React.Component {
                   return (
                     <tr key={index}>
                       <td><input type="checkbox" className="selectsingle" value="{item.id}" checked={this.state.checkedBoxes.find((p) => p.id === item.id)} onChange={(e) => this.toggleCheckbox(e, item)} />
-                        {item.id}
+                        {/* {item.id} */}
                       </td>
                       <td>{item.bev_type}</td>
                       <td>{item.bev_qty}</td>
-                      {/* <td>{item.office}</td>
-                      <td>{item.age}</td>
-                      <td>{item.salary}</td> */}
+                      <td>{item.bev_mg}</td>
+                      <td>{item.leftover_mg}</td>
                     </tr>
                   )
                 }.bind(this))
               }
             </tbody>
           </table>
+          <Button type="button" className="btn btn-danger" name="delete" onClick={this.deleteBeverages}>Delete Selected Beverage(s)</Button>
         </div>
       )
     } else {

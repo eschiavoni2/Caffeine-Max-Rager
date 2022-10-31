@@ -18,14 +18,6 @@ function Tracker() {
 		bevQty: 0,
 	})
 
-	// let selected = () => {
-	// 	let name = tracking.name;
-	// 	let value = tracking.value;
-	// 	tracking[name] = value;
-	// 	let data = value;
-	// 	alert(data)
-	// };
-
 	let quantityBev = (e) => setQty({ ...qty, bevQty: e.target.value });
 
 	let selectBev = (e) => setBev({ ...tracking, bevType: e.target.value });
@@ -47,15 +39,16 @@ function Tracker() {
 			})
 			.catch((err) => {
 			console.log(err)
-		})
+			})
+		window.location.reload(false);
 	};
 
 	return (
 		<Container>
 			<Row className="mt-4 justify-content-center">
-				<Col xs={6}>
+				<Col xs={7}>
 					<PageHeader />
-					<Card>
+					<Card className="mb-5">
 						<Card.Body as={Row}>
 							<Col>
 								<Row>
@@ -85,11 +78,11 @@ function Tracker() {
 															required
 														>
 															<option default value="selectBeverage">Select Beverage Type</option>
-															<option id="1" value="monster">Monster Ultra Sunrise</option>
-															<option id="2" value="coffee">Black Coffee</option>
-															<option id="3" value="americano">Americano</option>
-															<option id="4" value="nos">Sugar Free NOS</option>
-															<option id="5" value="five_hour">Five Hour Energy</option>
+															<option id="1" value="Monster Ultra Sunrise">Monster Ultra Sunrise</option>
+															<option id="2" value="Black Coffee">Black Coffee</option>
+															<option id="3" value="Americano">Americano</option>
+															<option id="4" value="Sugar Free NOS">Sugar Free NOS</option>
+															<option id="5" value="Five Hour Energy">Five Hour Energy</option>
 														</Form.Select>
 													</Col>
 												</Form.Group>
@@ -115,7 +108,8 @@ function Tracker() {
 														<Button
 															className="w-25"
 															type="submit"
-															variant="secondary">
+															variant="secondary"
+														>
 															Enter
 														</Button>
 													</Col>
