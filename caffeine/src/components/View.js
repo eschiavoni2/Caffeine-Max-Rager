@@ -1,17 +1,18 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import axios from 'axios';
+import React from "react";
+import Button from "react-bootstrap/Button";
+import axios from "axios";
+import Table from "react-bootstrap/Table";
 
 export default class View extends React.Component {
   constructor(props) {
     super(props);
     this.state = { bev_list: [] };
     this.headers = [
-      { key: 'id', label: 'Id' },
-      { key: 'bev_qty', label: 'Quantity' },
-      { key: 'bev_type', label: 'Beverage' },
-      { key: 'bev_mg', label: 'Caffeine Consumed Mg' },
-      { key: 'leftover_mg', label: 'Remaining Mg' }
+      { key: "id", label: "Id" },
+      { key: "bev_qty", label: "Quantity" },
+      { key: "bev_type", label: "Beverage" },
+      { key: "bev_mg", label: "Caffeine Consumed Mg" },
+      { key: "leftover_mg", label: "Remaining Mg" }
     ];
     this.state = { checkedBoxes: [] };
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
@@ -35,7 +36,7 @@ export default class View extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost/ReactPHPcrud/list_bev.php').then(response => {
+    fetch("http://localhost/ReactPHPcrud/list_bev.php").then(response => {
       console.log(response);
       return response.json();
     }).then(result => {
@@ -51,8 +52,8 @@ export default class View extends React.Component {
   }
 
   deleteBeverages = () => {
-    axios.get('http://localhost/ReactPHPcrud/delete.php?id=' + this.state.checkedBoxes)
-    if (window.confirm('Are you sure, want to delete the selected beverage?')) {
+    axios.get("http://localhost/ReactPHPcrud/delete.php?id=" + this.state.checkedBoxes)
+    if (window.confirm("Are you sure, want to delete the selected beverage?")) {
       alert(this.state.checkedBoxes + " Succesfully Deleted");
     }
     window.location.reload(false);
@@ -62,8 +63,9 @@ export default class View extends React.Component {
     const bevFound = this.state.bev_list && this.state.bev_list.length;
     if (bevFound) {
       return (
-        <div>
-          <table className="table table-bordered table-striped">
+        <div className="text-center pb-5">
+          <h3 className="mb-3">Caffeine Consumed</h3>
+          <Table striped="columns" hover variant="dark">
             <thead>
               <tr>
                 {
@@ -86,15 +88,17 @@ export default class View extends React.Component {
                       <td>{item.bev_type}</td>
                       <td>{item.bev_qty}</td>
                       <td>{item.bev_mg}</td>
-                      <td>{item.leftover_mg}</td>
+                      <td className="text-info">{item.leftover_mg}</td>
                     </tr>
                   )
                 }.bind(this))
               }
             </tbody>
-          </table>
-          <Button type="button" className="btn btn-danger" name="delete" onClick={this.deleteBeverages}>Delete Selected Beverage(s)</Button>
-        </div>
+          </Table>
+          <div className="d-flex justify-content-end">
+            <Button type="button" variant="outline-danger" name="delete" className="justify-content-end" onClick={this.deleteBeverages}>Delete Selected Beverage</Button>
+          </div>
+          </div>
       )
     } else {
       return (
@@ -105,19 +109,3 @@ export default class View extends React.Component {
     }
   }
 }
-//     return (
-//       <Table striped bordered hover>
-//         <thead>
-//           <tr>
-//             <th>#</th>
-//             <th>Beverage</th>
-//             <th>Quantity</th>
-//             <th>Caffeine Mg</th>
-//             <th>Description</th>
-//           </tr>
-//         </thead>
-//         {this.bevList()}
-//       </Table>
-//     )
-//   }
-// }

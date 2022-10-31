@@ -3,7 +3,9 @@ import React from "react";
 export default class PageHeader extends React.Component {
   render() {
     return (
-      <h1 className="my-3">Daily Caffeine Intake</h1>
+      <div>
+        <h1 className="my-3 text-center">Caffeine Tracker</h1>
+      </div>
     )
   }
 }

@@ -12,7 +12,7 @@ import View from "../components/View";
 
 function Tracker() {
 	const [tracking, setBev] = useState({
-		bevType: ''
+		bevType: ""
 	});
 	const [qty, setQty] = useState({
 		bevQty: 0,
@@ -31,14 +31,14 @@ function Tracker() {
 		console.log(type);
 		console.log(value);
 		const headers = {
-			'Content-Type': 'application/json',
+			"Content-Type": "application/json",
 		}
-		axios.post("http://localhost/ReactPHPcrud/insert_bev.php", { qty, tracking }, {headers: headers})
+		axios.post("http://localhost/ReactPHPcrud/insert_bev.php", { qty, tracking }, { headers: headers })
 			.then((res) => {
-			console.log(res)
+				console.log(res)
 			})
 			.catch((err) => {
-			console.log(err)
+				console.log(err)
 			})
 		window.location.reload(false);
 	};
@@ -48,7 +48,7 @@ function Tracker() {
 			<Row className="mt-4 justify-content-center">
 				<Col xs={7}>
 					<PageHeader />
-					<Card className="mb-5">
+					<Card className="mb-5" border="dark">
 						<Card.Body as={Row}>
 							<Col>
 								<Row>
@@ -59,7 +59,7 @@ function Tracker() {
 								<Row className="mb-3">
 									<Col>
 										<Card.Text>
-											Add your beverage and the quantity to find out how much caffeine you"ve had today along with how much more you can have without exceeding 500mg.
+											Click the dropdowns to add your beverage and the quantity and then press enter. This will find out how much caffeine you"ve had today along with how much more you can consume without exceeding 500mg.
 										</Card.Text>
 									</Col>
 								</Row>
@@ -107,8 +107,8 @@ function Tracker() {
 													<Col>
 														<Button
 															className="w-25"
+															variant="outline-secondary"
 															type="submit"
-															variant="secondary"
 														>
 															Enter
 														</Button>
@@ -121,8 +121,8 @@ function Tracker() {
 							</Col>
 						</Card.Body>
 					</Card>
-					<View />
 				</Col>
+				<View />
 			</Row>
 		</Container>
 	);
