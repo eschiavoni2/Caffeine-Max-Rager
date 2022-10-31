@@ -59,7 +59,7 @@ function Tracker() {
 								<Row className="mb-3">
 									<Col>
 										<Card.Text>
-											Click the dropdowns to add your beverage and the quantity and then press enter. This will find out how much caffeine you"ve had today along with how much more you can consume without exceeding 500mg.
+											Click the dropdowns to add your beverage and the quantity and then press enter. This will find out how much caffeine you have had today along with how much more you can consume without exceeding 500mg.
 										</Card.Text>
 									</Col>
 								</Row>
