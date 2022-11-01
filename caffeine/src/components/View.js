@@ -102,7 +102,7 @@ export default class View extends React.Component {
       )
     } else {
       return (
-        <div id="container">
+        <div className="text-center">
           No beverages found
         </div>
       )
