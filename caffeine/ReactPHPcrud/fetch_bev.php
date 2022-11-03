@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin:*");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
- $conn = mysqli_connect("localhost","root","root14!","caffeine");
+ $conn = mysqli_connect("containers-us-west-60.railway.app", "root", "WaLBEpIEU80u2lIfoGzh", "railway");
 
  $sql = "SELECT * FROM beverage";
  $query = mysqli_query($conn,$sql);

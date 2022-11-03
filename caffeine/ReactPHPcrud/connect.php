@@ -3,10 +3,10 @@ header("Access-Control-Allow-Origin:*");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-$servername = "localhost";
+$servername = "containers-us-west-60.railway.app";
 $username = "root";
-$password = "root14!";
-$database= "caffeine";
+$password = "WaLBEpIEU80u2lIfoGzh";
+$database= "railway";
  
 // Create connection
 $db = mysqli_connect($servername, $username, $password, $database);
